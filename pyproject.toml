@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "twilio-scripts"
+version = "0.1.0"
+description = ""
+authors = ["wet-bulb <djyl.ahn@gmail.com>"]
+readme = "README.md"
+packages = [{include = "twilio_scripts"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+python-dotenv = "^1.0.0"
+twilio = "^8.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
