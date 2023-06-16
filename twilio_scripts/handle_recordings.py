@@ -64,8 +64,9 @@ for idx in range(20):
     thread.start()
 
 # Open up a CSV file to dump the results of deleted recordings into
-file_exists = os.path.isfile('deletion_log.csv')
-with open('recordings.csv', 'a') as csvfile:
+file_path = '../logs/deletion_log.csv'
+file_exists = os.path.isfile(file_path)
+with open(file_path, 'a') as csvfile:
     record_writer = csv.writer(csvfile, delimiter=',')
     # Let's create the header row if the file doesn't exist
     if not file_exists:
