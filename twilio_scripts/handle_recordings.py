@@ -64,14 +64,16 @@ for idx in range(20):
     thread.start()
 
 # Open up a CSV file to dump the results of deleted recordings into
-with open('recordings.csv', 'w') as csvfile:
+file_exists = os.path.isfile('deletion_log.csv')
+with open('recordings.csv', 'a') as csvfile:
     record_writer = csv.writer(csvfile, delimiter=',')
-    # Let's create the header row
-    record_writer.writerow(["Recording SID", "Duration", "Date", "Call SID"])
+    # Let's create the header row if the file doesn't exist
+    if not file_exists:
+        record_writer.writerow(["Recording SID", "Duration", "Date", "Deletion Date", "Call SID"])
     
     for recording in client.recordings.list(date_created_before=n_days_ago):
         record_writer.writerow([recording.sid, recording.duration,
-                                recording.date_updated, recording.call_sid])
+                                recording.date_updated, date.today(), recording.call_sid])
         que.put(recording)
     que.join()  # block until all tasks are done
 
