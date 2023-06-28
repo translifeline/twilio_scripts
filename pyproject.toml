@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "twilio_scripts"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 requests = "^2.31.0"
 python-dotenv = "^1.0.0"
 twilio = "^8.2.1"
