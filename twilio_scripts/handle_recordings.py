@@ -68,7 +68,7 @@ file_path = '../logs/deletion_log.csv'
 # Check if the file exists
 if not os.path.isfile(file_path):
     # Create the file if it doesn't exist
-    with open(file_path, 'w') as csvfile:
+    with open(file_path, 'w+') as csvfile:
         # Write the header row
         record_writer = csv.writer(csvfile, delimiter=',')
         record_writer.writerow(["Recording SID", "Duration", "Date", "Deletion Date", "Call SID"])
