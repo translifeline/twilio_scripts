@@ -64,7 +64,7 @@ for idx in range(20):
     thread.start()
 
 # Open up a CSV file to dump the results of deleted recordings into
-file_path = '../logs/deletion_log.csv'
+file_path = 'logs/deletion_log.csv'
 file_exists = os.path.isfile(file_path)
 with open(file_path, 'a') as csvfile:
     record_writer = csv.writer(csvfile, delimiter=',')
