@@ -65,18 +65,13 @@ for idx in range(20):
 
 # Open up a CSV file to dump the results of deleted recordings into
 file_path = '../logs/deletion_log.csv'
-# Check if the file exists
-if not os.path.isfile(file_path):
-    # Create the file if it doesn't exist
-    with open(file_path, 'w') as csvfile:
-        # Write the header row
-        record_writer = csv.writer(csvfile, delimiter=',')
-        record_writer.writerow(["Recording SID", "Duration", "Date", "Deletion Date", "Call SID"])
-
-# Open the file in append mode
+file_exists = os.path.isfile(file_path)
 with open(file_path, 'a') as csvfile:
     record_writer = csv.writer(csvfile, delimiter=',')
-
+    # Let's create the header row if the file doesn't exist
+    if not file_exists:
+        record_writer.writerow(["Recording SID", "Duration", "Date", "Deletion Date", "Call SID"])
+    
     for recording in client.recordings.list(date_created_before=n_days_ago):
         record_writer.writerow([recording.sid, recording.duration,
                                 recording.date_updated, date.today(), recording.call_sid])
