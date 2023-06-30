@@ -14,7 +14,7 @@ load_dotenv()
 # Ensure your environmental variables have these configured
 acct = os.environ["TWILIO_ACCOUNT_SID"]
 auth = os.environ["TWILIO_AUTH_TOKEN"]
-n_days = os.environ["RECORDINGS_TIME_DELTA"]
+n_days = int(os.environ["RECORDINGS_TIME_DELTA"])
 
 # Calculate the date n days ago for 
 n_days_ago = date.today() - timedelta(days=n_days)
